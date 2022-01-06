@@ -1,4 +1,4 @@
-import smarttoken from "./index.js";
+const smarttoken = require("./index.js");
 
 const IV = "367af6cc14e1b29b"
 const KEY = "367af6cc14e1b29b367af6cc14e1b29b367af6cc14e1b29b367af6cc14e1b29b"
@@ -15,7 +15,8 @@ if (valObject) {
     console.log('wrong token');
 
 }
-// import {myEncryption} from "./index.js";
+//-----------------OR -------------------
+// const myEncryption = require("./Encryption.js");
 //
 // const IV = "367af6cc14e1b29b"
 // const KEY = "367af6cc14e1b29b367af6cc14e1b29b367af6cc14e1b29b367af6cc14e1b29b"
@@ -30,4 +31,4 @@ if (valObject) {
 // const valObject = JSON.parse(tokenparse);
 // if (valObject) {
 //     console.log(valObject);
-// }
+}

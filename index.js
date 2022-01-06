@@ -24,6 +24,6 @@ class Smarttoken {
         }
     }
 }
-
-export default Smarttoken
-export {myEncryption}
+module.exports = Smarttoken
+// export default Smarttoken
+// export {myEncryption}
