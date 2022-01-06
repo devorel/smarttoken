@@ -3,7 +3,7 @@ import smarttoken from "./index.js";
 const IV = "367af6cc14e1b29b"
 const KEY = "367af6cc14e1b29b367af6cc14e1b29b367af6cc14e1b29b367af6cc14e1b29b"
 
-let mysmarttoken=new smarttoken({IV:IV,KEY:KEY});
+let mysmarttoken = new smarttoken({IV: IV, KEY: KEY});
 let token = mysmarttoken.createToken({userid: 1, time: 1641474296307});
 console.log(token);
 
@@ -11,7 +11,7 @@ let valObject = mysmarttoken.validToken(token);
 
 if (valObject) {
     console.log(valObject);
-}else{
+} else {
     console.log('wrong token');
 
 }
