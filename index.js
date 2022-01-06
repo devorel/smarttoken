@@ -1,33 +1,28 @@
-const crypto = require('crypto');
+import myEncryption from "./Encryption.js";
 
-//crypto.randomBytes(16).toString('hex').substring(0, 16);
-//const ENC_KEY = crypto.randomBytes(32).toString('hex'); // Must be 256 bits (32 characters) 
-//const IV_LENGTH = 16; // For AES, this is always 16
-class Encryption {
-    static encrypt(password, val) {
-        try {
-            const ENC_KEY = crypto.createHash('sha256').update(password, 'utf8').digest("hex").substring(0, 32);
-            let cipher = crypto.createCipheriv('aes-256-cbc', ENC_KEY, Options.IV);
-            let encrypted = cipher.update(val, 'utf8', 'base64');
-            encrypted += cipher.final('base64');
-            return encrypted;
-        } catch (e) {
-            console.error(e);
-        }
-        return "";
+class Smarttoken {
+
+    constructor(config) {
+        this.IV = config.IV;
+        this.KEY = config.KEY;
     }
 
-    static decrypt(password, encrypted) {
+    createToken(obj) {
+        return myEncryption.encrypt(this.IV, this.KEY, JSON.stringify(obj));
+    }
+
+    validToken(token) {
+        //valid my token
+        let tokenparse = myEncryption.decrypt(this.IV, this.KEY, token);
         try {
-            const ENC_KEY = crypto.createHash('sha256').update(password, 'utf8').digest("hex").substring(0, 32);
-            let decipher = crypto.createDecipheriv('aes-256-cbc', ENC_KEY, Options.IV);
-            let decrypted = decipher.update(encrypted, 'base64', 'utf8');
-            return (decrypted + decipher.final('utf8'));
+            const valObject = JSON.parse(tokenparse);
+            if (valObject) {
+                return valObject
+            }
         } catch (e) {
-            console.error(e);
+            return false;
         }
-        return "";
     }
 }
-
-module.exports = Encryption;
+export default Smarttoken
+export {myEncryption}
