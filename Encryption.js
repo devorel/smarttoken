@@ -1,5 +1,5 @@
-// const crypto = require('crypto');
-import crypto from "crypto";
+const crypto = require('crypto');
+// import crypto from "crypto";
 
 
 //crypto.randomBytes(16).toString('hex').substring(0, 16);

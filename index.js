@@ -1,5 +1,5 @@
-import myEncryption from "./Encryption.js";
-
+// import myEncryption from "./Encryption.js";
+const myEncryption =require("./Encryption.js")
 class Smarttoken {
 
     constructor(config) {
